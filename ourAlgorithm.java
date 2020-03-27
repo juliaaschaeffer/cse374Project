@@ -63,7 +63,7 @@ public class ourAlgorithm
 				if(stopsHit[j] == i)
 					used = true; 
 			}
-			if(used == false && i % 2 == 0 && matrix[currentStop][i] < smallest)
+			if(used == false && matrix[currentStop][i] < smallest)
 			{
 				smallest = matrix[currentStop][i]; 
 				output = i; 
@@ -75,12 +75,28 @@ public class ourAlgorithm
 	
 	int findClosest(int currentStop)
 	{
+		int smallest = Integer.MAX_VALUE; 
 		int output = 0; 
+		
+		for(int i = 0; i < matrix[currentStop].length; i++)
+		{
+			boolean used = false; 
+			
+			// has to search all since its unordered
+			for(int j = 0; j < stopsHit.length; j++)
+			{
+				if(stopsHit[j] == i)
+					used = true; 
+			}
+			if(used == false && i % 2 == 0 && matrix[currentStop][i] < smallest)
+			{
+				smallest = matrix[currentStop][i]; 
+				output = i; 
+			}
+		}
 		
 		return output; 
 	}
-	
-	
 	
 	
 }
